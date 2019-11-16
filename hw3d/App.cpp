@@ -17,7 +17,7 @@ App::App( const std::string& commandLine )
 	:
 	commandLine( commandLine ),
 	wnd( 1280,720,"The Donkey Fart Box" ),
-	light( wnd.Gfx() )
+	light( wnd.Gfx(), 0.0f, 0.0f, 0.0f, 0.0f, 1.0f, 0.5f )
 {
 	// makeshift cli for doing some preprocessing bullshit (so many hacks here)
 	if( this->commandLine != "" )
@@ -61,10 +61,11 @@ App::App( const std::string& commandLine )
 void App::DoFrame()
 {
 	const auto dt = timer.Mark() * speed_factor;
+	totalTime += dt;
 	wnd.Gfx().BeginFrame( 0.07f,0.0f,0.12f );
 	wnd.Gfx().SetCamera( cam.GetMatrix() );
 	light.Bind( wnd.Gfx(),cam.GetMatrix() );
-		
+	
 	light.Draw( wnd.Gfx() );
 
 	while( const auto e = wnd.kbd.ReadKey() )

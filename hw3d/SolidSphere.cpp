@@ -5,7 +5,7 @@
 #include "Sphere.h"
 
 
-SolidSphere::SolidSphere( Graphics& gfx,float radius )
+SolidSphere::SolidSphere( Graphics& gfx,float radius, float r, float g, float b )
 {
 	using namespace Bind;
 	namespace dx = DirectX;
@@ -27,6 +27,7 @@ SolidSphere::SolidSphere( Graphics& gfx,float radius )
 		dx::XMFLOAT3 color = { 1.0f,1.0f,1.0f };
 		float padding;
 	} colorConst;
+	colorConst.color = { r,g,b };
 	AddBind( PixelConstantBuffer<PSColorConstant>::Resolve( gfx,colorConst,1u ) );
 
 	AddBind( InputLayout::Resolve( gfx,model.vertices.GetLayout(),pvsbc ) );

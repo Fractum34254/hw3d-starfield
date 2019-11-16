@@ -1,10 +1,13 @@
 #include "PointLight.h"
 #include "imgui/imgui.h"
 
-PointLight::PointLight( Graphics& gfx,float radius )
+PointLight::PointLight( Graphics& gfx, float x, float y, float z, float r, float g, float b, float radius )
 	:
-	mesh( gfx,radius ),
-	cbuf( gfx )
+	mesh( gfx,radius, r, g, b ),
+	cbuf( gfx ),
+	x(x),
+	y(y),
+	z(z)
 {
 	Reset();
 }
@@ -39,7 +42,7 @@ void PointLight::SpawnControlWindow() noexcept
 void PointLight::Reset() noexcept
 {
 	cbData = {
-		{ 10.0f,9.0f,2.5f },
+		{ x,y,z },
 		{ 0.05f,0.05f,0.05f },
 		{ 1.0f,1.0f,1.0f },
 		1.0f,
@@ -62,4 +65,12 @@ void PointLight::Bind( Graphics& gfx,DirectX::FXMMATRIX view ) const noexcept
 	DirectX::XMStoreFloat3( &dataCopy.pos,DirectX::XMVector3Transform( pos,view ) );
 	cbuf.Update( gfx,dataCopy );
 	cbuf.Bind( gfx );
+}
+
+void PointLight::SetPos(float x_in, float y_in, float z_in) noexcept
+{
+	x = x_in;
+	y = y_in;
+	z = z_in;
+	Reset();
 }

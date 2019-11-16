@@ -19,6 +19,7 @@ private:
 	void DoFrame();
 	void ShowImguiDemoWindow();
 private:
+	float totalTime = 0.0f;
 	std::string commandLine;
 	bool showDemoWindow = false;
 	ImguiManager imgui;
