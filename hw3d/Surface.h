@@ -115,6 +115,7 @@ public:
 		std::string note;
 	};
 public:
+	Surface(int resource);
 	Surface( unsigned int width,unsigned int height ) noexcept;
 	Surface( Surface&& source ) noexcept;
 	Surface( Surface& ) = delete;
@@ -123,7 +124,7 @@ public:
 	~Surface();
 	void Clear( Color fillValue ) noexcept;
 	void PutPixel( unsigned int x,unsigned int y,Color c ) noxnd;
-	Color GetPixel( unsigned int x,unsigned int y ) const noxnd;
+	Color GetSurfacePixel( unsigned int x,unsigned int y ) const noxnd;
 	unsigned int GetWidth() const noexcept;
 	unsigned int GetHeight() const noexcept;
 	Color* GetBufferPtr() noexcept;

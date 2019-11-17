@@ -21,6 +21,7 @@
 #define FULL_WINTARD
 #include "Surface.h"
 #include <algorithm>
+#include <fstream>
 namespace Gdiplus
 {
 	using std::min;
@@ -30,6 +31,46 @@ namespace Gdiplus
 #include <sstream>
 
 #pragma comment( lib,"gdiplus.lib" )
+
+Surface::Surface(int resource)
+{
+	//receive bitmap
+	HBITMAP hBitmap = LoadBitmap(GetModuleHandle(NULL), MAKEINTRESOURCE(resource));
+	if (hBitmap == NULL)
+	{
+		std::stringstream ss;
+		ss << "Bitmap Resource [" << std::to_string(resource) << "]: failed to load.";
+		throw Exception(__LINE__, __FILE__, ss.str());
+	}
+	BITMAP bitmap;
+	GetObject(hBitmap, sizeof(bitmap), &bitmap);
+	///extract dimensions
+	width = (int)bitmap.bmWidth;
+	height = (int)bitmap.bmHeight;
+	if (!width || !height)
+	{
+		std::stringstream ss;
+		ss << "Loading Bitmap Resource [" << std::to_string(resource) << "] failed:\nAt least one dimension is zero!\n\nHeight: " << std::to_string(height) << " Width: " << std::to_string(width) << "\n";
+		throw Exception(__LINE__, __FILE__, ss.str());
+	}
+	pBuffer = std::make_unique<Color[]>(width * height);
+	///get a HDC out of the bitmap
+	HDC hdcBmp = CreateCompatibleDC(NULL);
+	SelectObject(hdcBmp, hBitmap);
+
+	///loop through dimensions && extract pixel colors
+	for (int y = 0; y < height; y++)
+	{
+		for (int x = 0; x < width; x++)
+		{
+			COLORREF pixel = GetPixel(hdcBmp, x, y);
+			const unsigned char r = (const unsigned char)GetRValue(pixel);
+			const unsigned char g = (const unsigned char)GetGValue(pixel);
+			const unsigned char b = (const unsigned char)GetBValue(pixel);
+			PutPixel(x, y, { r,g,b });
+		}
+	}
+}
 
 Surface::Surface( unsigned int width,unsigned int height ) noexcept
 	:
@@ -71,7 +112,7 @@ void Surface::PutPixel( unsigned int x,unsigned int y,Color c ) noxnd
 	pBuffer[y * width + x] = c;
 }
 
-Surface::Color Surface::GetPixel( unsigned int x,unsigned int y ) const noxnd
+Surface::Color Surface::GetSurfacePixel( unsigned int x,unsigned int y ) const noxnd
 {
 	assert( x >= 0 );
 	assert( y >= 0 );

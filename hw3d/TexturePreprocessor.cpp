@@ -14,7 +14,7 @@ inline void TexturePreprocessor::TransformSurface( Surface& surf,F&& func )
 	{
 		for( unsigned int x = 0; x < width; x++ )
 		{
-			const auto n = ColorToVector( surf.GetPixel( x,y ) );
+			const auto n = ColorToVector( surf.GetSurfacePixel( x,y ) );
 			surf.PutPixel( x,y,VectorToColor( func( n,x,y ) ) );
 		}
 	}
