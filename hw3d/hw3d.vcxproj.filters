@@ -344,6 +344,12 @@
     <ClInclude Include="Star.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="StarClassMap.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="StarLight.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="hw3d.rc">
@@ -352,6 +358,9 @@
   </ItemGroup>
   <ItemGroup>
     <Image Include="chili.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="colorTemperature.bmp">
       <Filter>Resource Files</Filter>
     </Image>
   </ItemGroup>

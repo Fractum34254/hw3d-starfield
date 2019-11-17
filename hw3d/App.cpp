@@ -29,7 +29,7 @@ void LoadFile(const std::string& name, std::vector<std::string>& vector)
 App::App( const std::string& commandLine )
 	:
 	commandLine( commandLine ),
-	wnd( 1280,720,"Starfield" )
+	wnd( 1800,1000,"Starfield" )
 {
 	// makeshift cli for doing some preprocessing bullshit (so many hacks here)
 	if( this->commandLine != "" )
@@ -75,7 +75,7 @@ App::App( const std::string& commandLine )
 	for (std::string& s : fileLines)
 	{
 		s.pop_back();
-		stars.push_back(std::move(Star(s, wnd.Gfx())));
+		starLights.push_back(std::move(StarLight(s, wnd.Gfx(), starclassmap)));
 	}
 
 }
@@ -84,10 +84,10 @@ void App::DoFrame()
 {
 	const auto dt = timer.Mark() * speed_factor;
 	totalTime += dt;
-	wnd.Gfx().BeginFrame( 0.07f,0.0f,0.12f );
+	wnd.Gfx().BeginFrame( 0.0f,0.0f,0.0f ); ///was: 0.07f, 0.0f, 0.12f
 	wnd.Gfx().SetCamera( cam.GetMatrix() );
 	
-	for (const Star& s : stars)
+	for (const StarLight& s : starLights)
 	{
 		s.Draw(cam.GetMatrix());
 	}

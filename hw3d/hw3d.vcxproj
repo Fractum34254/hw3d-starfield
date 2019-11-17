@@ -184,6 +184,8 @@
     <ClInclude Include="ConstantBuffers.h" />
     <ClInclude Include="Cube.h" />
     <ClInclude Include="Star.h" />
+    <ClInclude Include="StarClassMap.h" />
+    <ClInclude Include="StarLight.h" />
     <ClInclude Include="TexturePreprocessor.h" />
     <ClInclude Include="TestCube.h" />
     <ClInclude Include="Drawable.h" />
@@ -232,6 +234,7 @@
   </ItemGroup>
   <ItemGroup>
     <Image Include="chili.ico" />
+    <Image Include="colorTemperature.bmp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="DXGetErrorDescription.inl" />

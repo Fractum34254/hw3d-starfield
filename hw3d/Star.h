@@ -4,6 +4,7 @@
 #include "ChiliMath.h"
 #include "PointLight.h"
 #include "Graphics.h"
+#include "StarClassMap.h"
 
 class Star
 {
@@ -19,12 +20,12 @@ public:
 	};
 	Star(const Star& s)
 		:
-		Star(s.GetProperties(), s.GetGfx())
+		Star(s.GetProperties(), s.GetGfx(), s.GetStarClassMap())
 	{}
-	Star(const std::string& properties, Graphics& gfx)
+	Star(const std::string& properties, Graphics& gfx, StarClassMap& starMap)
 		:
 		gfx(gfx),
-		light(gfx, 0.0f, 0.0f, 0.0f, 1.0f, 1.0f, 1.0f, 0.2f)
+		classMap(starMap)
 	{
 		fullProperties = properties;
 		std::string information = "";
@@ -52,6 +53,7 @@ public:
 					if (information == "")
 					{
 						unknown += UnknownProperties::SubStarclass;
+						sub_class = "5.0";
 					}
 					break;
 				case 5:
@@ -123,8 +125,8 @@ public:
 		{
 			unknown += UnknownProperties::Radius;
 		}
-		const std::tuple<float, float, float> pos = GetEquatorialPosition();
-		light.SetPos(std::get<0>(pos), std::get<1>(pos), std::get<2>(pos));
+		pos = GetEquatorialPosition();
+		color = classMap.GetColor(main_class, std::stof(sub_class));
 	}
 	float GetRightAscension() const ///in radians
 	{
@@ -137,11 +139,6 @@ public:
 	float GetDistance() const ///in lightyears
 	{
 		return std::stof(distance);
-	}
-	void Draw(DirectX::FXMMATRIX view) const
-	{
-		light.Bind(gfx, view);
-		light.Draw(gfx);
 	}
 	std::tuple<float, float, float> GetEquatorialPosition() const
 	{
@@ -159,6 +156,14 @@ public:
 		z *= dist;
 		return std::make_tuple(x, y, z);
 	}
+	std::tuple<float, float, float> GetPosition() const
+	{
+		return pos;
+	}
+	std::tuple<float, float, float> GetColor() const
+	{
+		return color;
+	}
 	Graphics& GetGfx() const
 	{
 		return gfx;
@@ -167,8 +172,13 @@ public:
 	{
 		return fullProperties;
 	}
+	StarClassMap& GetStarClassMap() const
+	{
+		return classMap;
+	}
 private:
 	Graphics& gfx;
+	StarClassMap& classMap;
 	static constexpr char fill = '#';
 	char unknown = 0;
 	std::string fullProperties;
@@ -191,5 +201,6 @@ private:
 	std::string absMag;
 	std::string mass;
 	std::string radius;
-	PointLight light;
+	std::tuple<float, float, float> pos;
+	std::tuple<float, float, float> color;
 };
