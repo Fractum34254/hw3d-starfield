@@ -35,7 +35,7 @@ namespace Gdiplus
 Surface::Surface(int resource)
 {
 	//receive bitmap
-	HBITMAP hBitmap = LoadBitmap(GetModuleHandle(NULL), MAKEINTRESOURCE(resource));
+	HANDLE hBitmap = LoadImage(GetModuleHandle(NULL), MAKEINTRESOURCE(resource), IMAGE_BITMAP, 0, 0, 0u);
 	if (hBitmap == NULL)
 	{
 		std::stringstream ss;
