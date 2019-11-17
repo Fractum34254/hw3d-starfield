@@ -12,7 +12,7 @@ public:
 	StarLight(const std::string& properties, Graphics& gfx, StarClassMap& starMap)
 		:
 		star(properties, gfx, starMap),
-		light(star.GetGfx(), std::get<0>(star.GetPosition()), std::get<1>(star.GetPosition()), std::get<2>(star.GetPosition()), std::get<0>(star.GetColor()), std::get<1>(star.GetColor()), std::get<2>(star.GetColor()), 0.2f)
+		light(star.GetGfx(), std::get<0>(star.GetEquatorialPosition()), std::get<1>(star.GetEquatorialPosition()), std::get<2>(star.GetEquatorialPosition()), std::get<0>(star.GetColor()), std::get<1>(star.GetColor()), std::get<2>(star.GetColor()), 0.2f)
 	{}
 	void Draw(DirectX::FXMMATRIX view) const
 	{

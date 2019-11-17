@@ -125,8 +125,9 @@ public:
 		{
 			unknown += UnknownProperties::Radius;
 		}
-		pos = GetEquatorialPosition();
-		color = classMap.GetColor(main_class, std::stof(sub_class));
+		pos = CalculateEquatorialPosition();
+		temperature = classMap.GetTemperature(main_class, std::stof(sub_class));
+		color = classMap.GetColor(temperature);
 	}
 	float GetRightAscension() const ///in radians
 	{
@@ -141,22 +142,6 @@ public:
 		return std::stof(distance);
 	}
 	std::tuple<float, float, float> GetEquatorialPosition() const
-	{
-		///on unit circle
-		const float dec = GetDeclination();
-		const float ra = GetRightAscension();
-		const float cosDec = cos(dec);
-		float y = sin(dec);
-		float z = cosDec * cos(ra);
-		float x = -sin(ra) * cosDec;
-		///scale all up by distance
-		const float dist = GetDistance();
-		x *= dist;
-		y *= dist;
-		z *= dist;
-		return std::make_tuple(x, y, z);
-	}
-	std::tuple<float, float, float> GetPosition() const
 	{
 		return pos;
 	}
@@ -175,6 +160,27 @@ public:
 	StarClassMap& GetStarClassMap() const
 	{
 		return classMap;
+	}
+private:
+	std::tuple<float, float, float> CalculateEquatorialPosition() const
+	{
+		///on unit circle
+		const float dec = GetDeclination();
+		const float ra = GetRightAscension();
+		const float cosDec = cos(dec);
+		float y = sin(dec);
+		float z = cosDec * cos(ra);
+		float x = -sin(ra) * cosDec;
+		///scale all up by distance
+		const float dist = GetDistance();
+		x *= dist;
+		y *= dist;
+		z *= dist;
+		return std::make_tuple(x, y, z);
+	}
+	std::tuple<float, float, float> CalculateHRDPosition() const
+	{
+
 	}
 private:
 	Graphics& gfx;
@@ -203,4 +209,5 @@ private:
 	std::string radius;
 	std::tuple<float, float, float> pos;
 	std::tuple<float, float, float> color;
+	float temperature;
 };
