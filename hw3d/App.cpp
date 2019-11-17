@@ -13,11 +13,23 @@ namespace dx = DirectX;
 
 GDIPlusManager gdipm;
 
+void LoadFile(const std::string& name, std::vector<std::string>& vector)
+{
+	std::fstream file(name);
+
+	for (std::string line; std::getline(file, line);)
+	{
+		if (!line.empty())
+		{
+			vector.push_back(line);
+		}
+	}
+}
+
 App::App( const std::string& commandLine )
 	:
 	commandLine( commandLine ),
-	wnd( 1280,720,"The Donkey Fart Box" ),
-	light( wnd.Gfx(), 0.0f, 0.0f, 0.0f, 0.0f, 1.0f, 0.5f )
+	wnd( 1280,720,"Starfield" )
 {
 	// makeshift cli for doing some preprocessing bullshit (so many hacks here)
 	if( this->commandLine != "" )
@@ -56,6 +68,16 @@ App::App( const std::string& commandLine )
 	}
 
 	wnd.Gfx().SetProjection( dx::XMMatrixPerspectiveLH( 1.0f,9.0f / 16.0f,0.5f,400.0f ) );
+
+	std::vector<std::string> fileLines;
+	LoadFile("SternenListeOutput.starlist", fileLines);
+
+	for (std::string& s : fileLines)
+	{
+		s.pop_back();
+		stars.push_back(std::move(Star(s, wnd.Gfx())));
+	}
+
 }
 
 void App::DoFrame()
@@ -64,9 +86,11 @@ void App::DoFrame()
 	totalTime += dt;
 	wnd.Gfx().BeginFrame( 0.07f,0.0f,0.12f );
 	wnd.Gfx().SetCamera( cam.GetMatrix() );
-	light.Bind( wnd.Gfx(),cam.GetMatrix() );
 	
-	light.Draw( wnd.Gfx() );
+	for (const Star& s : stars)
+	{
+		s.Draw(cam.GetMatrix());
+	}
 
 	while( const auto e = wnd.kbd.ReadKey() )
 	{
@@ -133,7 +157,6 @@ void App::DoFrame()
 		
 	// imgui windows
 	cam.SpawnControlWindow();
-	light.SpawnControlWindow();
 	ShowImguiDemoWindow();
 
 	// present

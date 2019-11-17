@@ -183,6 +183,7 @@
     <ClInclude Include="ConditionalNoexcept.h" />
     <ClInclude Include="ConstantBuffers.h" />
     <ClInclude Include="Cube.h" />
+    <ClInclude Include="Star.h" />
     <ClInclude Include="TexturePreprocessor.h" />
     <ClInclude Include="TestCube.h" />
     <ClInclude Include="Drawable.h" />
@@ -236,6 +237,7 @@
     <None Include="DXGetErrorDescription.inl" />
     <None Include="DXGetErrorString.inl" />
     <None Include="DXTrace.inl" />
+    <None Include="SternenListeOutput.starlist" />
   </ItemGroup>
   <ItemGroup>
     <FxCompile Include="PhongPSNormalMap.hlsl">

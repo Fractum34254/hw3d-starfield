@@ -6,7 +6,9 @@
 #include "PointLight.h"
 #include "TestPlane.h"
 #include "Mesh.h"
+#include "Star.h"
 #include <set>
+#include <fstream>
 
 class App
 {
@@ -27,5 +29,5 @@ private:
 	ChiliTimer timer;
 	float speed_factor = 1.0f;
 	Camera cam;
-	PointLight light;
+	std::vector<Star> stars;
 };

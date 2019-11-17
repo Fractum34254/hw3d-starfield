@@ -341,6 +341,9 @@
     <ClInclude Include="TexturePreprocessor.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Star.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="hw3d.rc">
@@ -361,6 +364,9 @@
     </None>
     <None Include="DXTrace.inl">
       <Filter>Dxerr</Filter>
+    </None>
+    <None Include="SternenListeOutput.starlist">
+      <Filter>Resource Files</Filter>
     </None>
   </ItemGroup>
   <ItemGroup>
