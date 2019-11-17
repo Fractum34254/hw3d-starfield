@@ -109,7 +109,7 @@ namespace Bind
 		}
 		static std::shared_ptr<PixelConstantBuffer> Resolve( Graphics& gfx,const C& consts,UINT slot = 0 )
 		{
-			return Codex::Resolve<PixelConstantBuffer>( gfx,consts,slot );
+			return Codex::ResolveUnique<PixelConstantBuffer>( gfx,consts,slot );
 		}
 		static std::shared_ptr<PixelConstantBuffer> Resolve( Graphics& gfx,UINT slot = 0 )
 		{
