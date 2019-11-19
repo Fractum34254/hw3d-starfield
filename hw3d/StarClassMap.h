@@ -1,5 +1,4 @@
 #pragma once
-#include <tuple>
 #include <string>
 #include <unordered_map>
 #include "Surface.h"
@@ -12,19 +11,19 @@ public:
 		:
 		colorMap(IDB_BITMAP1)
 	{
-		heatMap["O"] = { 50000.0f, 30000.0f };			///Main Sequence
-		heatMap["B"] = { 28000.0f, 10000.0f };
-		heatMap["A"] = { 9750.0f, 7500.0f };
-		heatMap["F"] = { 7350.0f, 6000.0f };
-		heatMap["G"] = { 5900.0f, 5000.0f };
-		heatMap["K"] = { 4850.0f, 3500.0f };
-		heatMap["M"] = { 3350.0f, 2000.0f };
-		heatMap["L"] = { 2000.0f, 1300.0f };			///Brown Dwarfes
-		heatMap["T"] = { 1300.0f, 600.0f };
-		heatMap["Y"] = { 600.0f, 200.0f };
-		heatMap["R"] = { 5400.0f, 3500.0f };			///Red Giants
-		heatMap["N"] = { 3500.0f, 2000.0f };
-		heatMap["S"] = { 3500.0f, 1900.0f };
+		heatMap["O"] = {0.0, 1.0, 50000.0f, 30000.0f };			///Main Sequence
+		heatMap["B"] = {1.0, 1.0, 28000.0f, 10000.0f };
+		heatMap["A"] = {2.0, 1.0, 9750.0f, 7500.0f };
+		heatMap["F"] = {3.0, 1.0, 7350.0f, 6000.0f };
+		heatMap["G"] = {4.0, 1.0, 5900.0f, 5000.0f };
+		heatMap["K"] = {5.0, 1.0, 4850.0f, 3500.0f };
+		heatMap["M"] = {6.0, 1.0, 3350.0f, 2000.0f };
+		heatMap["L"] = {7.0, 1.0, 2000.0f, 1300.0f };			///Brown Dwarfes
+		heatMap["T"] = {8.0, 1.0, 1300.0f, 600.0f };
+		heatMap["Y"] = {9.0, 1.0, 600.0f, 200.0f };
+		heatMap["R"] = {4.5, 1.4, 5400.0f, 3500.0f };			///Red Giants
+		heatMap["N"] = {5.9, 1.1, 3500.0f, 2000.0f };
+		heatMap["S"] = {5.9, 1.2, 3500.0f, 1900.0f };
 	}
 	float GetTemperature(std::string main_class, float sub_class)
 	{
@@ -36,10 +35,23 @@ public:
 		{
 			return 0.0f;
 		}
-		const std::pair<float, float> tempBoundaries = heatMap.at(main_class);
-		return tempBoundaries.first - sub_class / 10.0f * (tempBoundaries.first - tempBoundaries.second);
+		const std::tuple<double, double, float, float> tempBoundaries = heatMap.at(main_class);
+		return std::get<2>(tempBoundaries) - sub_class / 10.0f * (std::get<2>(tempBoundaries) - std::get<3>(tempBoundaries));
 	}
-	std::tuple<float, float, float> GetColor(float temp)
+	double GetHRDXCoordinateNormalized(std::string main_class, float sub_class)
+	{
+		if (main_class.front() == 'D')
+		{
+			main_class = main_class.substr(1, 1);
+		}
+		if (heatMap.find(main_class) == heatMap.end())
+		{
+			return -1.0f;
+		}
+		const std::tuple<double, double, float, float> specClass = heatMap.at(main_class);
+		return (std::get<0>(specClass) + ((double)sub_class) / 10.0 * std::get<1>(specClass)) / 10.0;
+	}
+	Vec3 GetColor(float temp)
 	{
 		if (temp == 0.0f)
 		{
@@ -50,11 +62,12 @@ public:
 		const Surface::Color color = colorMap.GetSurfacePixel(x, y);
 		return { ((float)color.GetR()) / 255.0f, ((float)color.GetG()) / 255.0f, ((float)color.GetB()) / 255.0f };
 	}
-	std::tuple<float, float, float> GetColor(std::string main_class, float sub_class)
+	Vec3 GetColor(std::string main_class, float sub_class)
 	{
 		return GetColor(GetTemperature(main_class, sub_class));
 	}
 private:
-	std::unordered_map<std::string, std::pair<float, float>> heatMap;
+	//classchar -> number, width, high, low
+	std::unordered_map<std::string, std::tuple<double, double, float, float>> heatMap;
 	Surface colorMap;
 };

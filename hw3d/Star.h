@@ -1,6 +1,6 @@
 #pragma once
 #include <string>
-#include <tuple>
+#include "Vec3.h"
 #include "ChiliMath.h"
 #include "PointLight.h"
 #include "Graphics.h"
@@ -102,6 +102,7 @@ public:
 					if (information == "")
 					{
 						unknown += UnknownProperties::AbsMag;
+						absMag = "-10.0";
 					}
 					break;
 				case 17:
@@ -125,7 +126,8 @@ public:
 		{
 			unknown += UnknownProperties::Radius;
 		}
-		pos = CalculateEquatorialPosition();
+		eqPos = CalculateEquatorialPosition();
+		hrdPos = CalculateHRDPosition(50.0f);
 		temperature = classMap.GetTemperature(main_class, std::stof(sub_class));
 		color = classMap.GetColor(temperature);
 	}
@@ -141,11 +143,15 @@ public:
 	{
 		return std::stof(distance);
 	}
-	std::tuple<float, float, float> GetEquatorialPosition() const
+	Vec3 GetEquatorialPosition() const
 	{
-		return pos;
+		return eqPos;
 	}
-	std::tuple<float, float, float> GetColor() const
+	Vec3 GetHRDPosition() const
+	{
+		return hrdPos;
+	}
+	Vec3 GetColor() const
 	{
 		return color;
 	}
@@ -161,8 +167,12 @@ public:
 	{
 		return classMap;
 	}
+	float GetAbsoluteMagnitude() const
+	{
+		return std::stof(absMag);
+	}
 private:
-	std::tuple<float, float, float> CalculateEquatorialPosition() const
+	Vec3 CalculateEquatorialPosition() const
 	{
 		///on unit circle
 		const float dec = GetDeclination();
@@ -176,11 +186,23 @@ private:
 		x *= dist;
 		y *= dist;
 		z *= dist;
-		return std::make_tuple(x, y, z);
+		return { x, y, z };
 	}
-	std::tuple<float, float, float> CalculateHRDPosition() const
+	Vec3 CalculateHRDPosition(float scale) const
 	{
+		//normalized x and y
+		const double x = classMap.GetHRDXCoordinateNormalized(main_class, std::stof(sub_class));
+		if ((unknown & UnknownProperties::AbsMag) || (x==-1.0))
+		{
+			return { 0.0f, 0.0f, 0.0f };
+		}
+		///max: 38	min: -2
+		const double y = (18.0 - (double)GetAbsoluteMagnitude()) / 40.0;
+		//NOT normalized z
+		const float z = 10.0f;
+		const double scaleD = (double)scale;
 
+		return { (float)(x * scaleD), (float)(y*scaleD), z };
 	}
 private:
 	Graphics& gfx;
@@ -207,7 +229,8 @@ private:
 	std::string absMag;
 	std::string mass;
 	std::string radius;
-	std::tuple<float, float, float> pos;
-	std::tuple<float, float, float> color;
+	Vec3 eqPos;
+	Vec3 hrdPos;
+	Vec3 color;
 	float temperature;
 };
