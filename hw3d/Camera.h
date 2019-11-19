@@ -10,6 +10,7 @@ public:
 	void Reset() noexcept;
 	void Rotate( float dx,float dy ) noexcept;
 	void Translate( DirectX::XMFLOAT3 translation ) noexcept;
+	void TranslateWorldSpace(DirectX::XMFLOAT3 translation) noexcept;
 private:
 	DirectX::XMFLOAT3 pos;
 	float pitch;
