@@ -3,6 +3,7 @@
 #include "Vec3.h"
 #include "Star.h"
 #include "PointLight.h"
+#include "imgui/imgui.h"
 
 class StarLight
 {
@@ -44,6 +45,70 @@ public:
 	void Update(float dt)
 	{
 		light.SetPos(light.GetPos() + GetVelocity() * dt);
+	}
+	void SetPosToEq()
+	{
+		light.SetPos(star.GetEquatorialPosition());
+	}
+	void SetPosToHRD()
+	{
+		light.SetPos(star.GetHRDPosition());
+	}
+	void SpawnInfoWindow()
+	{
+		if (ImGui::Begin(star.GetName().c_str()))
+		{
+			std::string info = "Name: " + star.GetName();
+			ImGui::Text(info.c_str());
+			info = "System: " + star.GetSystem();
+			ImGui::Text(info.c_str());
+			info = "Typ: " + star.GetType();
+			ImGui::Text(info.c_str());
+			if (star.GetUnknown() & Star::UnknownProperties::SubStarclass)
+			{
+				info = "Klasse: " + star.GetMainClass();
+				ImGui::Text(info.c_str());
+			}
+			else
+			{
+				info = "Klasse: " + star.GetFullClass();
+				ImGui::Text(info.c_str());
+			}
+			info = "Rektaszension: " + star.GetFullRightAscension();
+			ImGui::Text(info.c_str());
+			info = "Deklination: " + star.GetFullDeclination();
+			ImGui::Text(info.c_str());
+			info = "Entfernung: " + star.GetDistanceString();
+			ImGui::Text(info.c_str());
+			if (!(star.GetUnknown() & Star::UnknownProperties::Parallax))
+			{
+				info = "Parallaxe: " + star.GetParallaxString();
+				ImGui::Text(info.c_str());
+			}
+			if (!(star.GetUnknown() & Star::UnknownProperties::AppMag))
+			{
+				info = "Relative Helligkeit: " + star.GetAppMagString();
+				ImGui::Text(info.c_str());
+			}
+			if (!(star.GetUnknown() & Star::UnknownProperties::AbsMag))
+			{
+				info = "Absolute Helligkeit: " + star.GetAbsMagString();
+				ImGui::Text(info.c_str());
+			}
+			info = "Sternbild: " + star.GetConstellation();
+			ImGui::Text(info.c_str());
+			if (!(star.GetUnknown() & Star::UnknownProperties::Mass))
+			{
+				info = "Masse: " + star.GetMass();
+				ImGui::Text(info.c_str());
+			}
+			if (!(star.GetUnknown() & Star::UnknownProperties::Radius))
+			{
+				info = "Radius: " + star.GetRadius();
+				ImGui::Text(info.c_str());
+			}
+		}
+		ImGui::End();
 	}
 private:
 	Vec3 CalculateVelocity() const

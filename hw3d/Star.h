@@ -15,8 +15,8 @@ public:
 		Radius = 0x2,
 		Mass = 0x4,
 		AppMag = 0x8,
-		AbsMag = 0x16,
-		Parallax = 0x32
+		AbsMag = 0x10,
+		Parallax = 0x20
 	};
 	Star(const Star& s)
 		:
@@ -127,7 +127,7 @@ public:
 			unknown += UnknownProperties::Radius;
 		}
 		eqPos = CalculateEquatorialPosition();
-		hrdPos = CalculateHRDPosition(50.0f);
+		hrdPos = CalculateHRDPosition(100.0f);
 		temperature = classMap.GetTemperature(main_class, std::stof(sub_class));
 		color = classMap.GetColor(temperature);
 	}
@@ -171,6 +171,67 @@ public:
 	{
 		return std::stof(absMag);
 	}
+public:
+	char GetUnknown() const
+	{
+		return unknown;
+	}
+	std::string GetName() const
+	{
+		return name;
+	}
+	std::string GetSystem() const
+	{
+		return system;
+	}
+	std::string GetType() const
+	{
+		return type;
+	}
+	std::string GetMainClass() const
+	{
+		return main_class;
+	}
+	std::string GetFullClass() const
+	{
+		return main_class + sub_class;
+	}
+	std::string GetFullRightAscension() const
+	{
+		return RAHours + "h " + RAMinutes + "m " + RASeconds + "s";
+	}
+	std::string GetFullDeclination() const
+	{
+		return DSign + DDegrees + "° " + DMinutes + "' " + DSeconds + "\"";
+	}
+	std::string GetDistanceString() const
+	{
+		return distance + " ly";
+	}
+	std::string GetParallaxString() const
+	{
+		return parallax + "\"";
+	}
+	std::string GetAppMagString() const
+	{
+		return appMag + " mag";
+	}
+	std::string GetAbsMagString() const
+	{
+		return absMag + " mag";
+	}
+	std::string GetConstellation() const
+	{
+		return constellation;
+	}
+	std::string GetMass() const
+	{
+		return mass + " Sonnenmassen";
+	}
+	std::string GetRadius() const
+	{
+		return radius + " Sonnenradien";
+	}
 private:
 	Vec3 CalculateEquatorialPosition() const
 	{
@@ -199,7 +260,7 @@ private:
 		///max: 38	min: -2
 		const double y = (18.0 - (double)GetAbsoluteMagnitude()) / 40.0;
 		//NOT normalized z
-		const float z = 10.0f;
+		const float z = 0.0f;
 		const double scaleD = (double)scale;
 
 		return { (float)(x * scaleD), (float)(y*scaleD), z };

@@ -26,7 +26,7 @@ private:
 	std::string commandLine;
 	bool showDemoWindow = false;
 	float dir = 0.0f; //0: no movement	1: to hrd	-1: to eq
-	static constexpr float hrdTime = 1.0f;
+	static constexpr float hrdTime = 4.0f;
 	static constexpr float eqTime = 0.0f;
 	float actTime = 0.0f;
 	ImguiManager imgui;
@@ -36,4 +36,5 @@ private:
 	Camera cam;
 	StarClassMap starclassmap;
 	std::vector<StarLight> starLights;
+	SolidSphere trashbin;
 };

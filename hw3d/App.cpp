@@ -29,7 +29,8 @@ void LoadFile(const std::string& name, std::vector<std::string>& vector)
 App::App( const std::string& commandLine )
 	:
 	commandLine( commandLine ),
-	wnd( 1600,900,"Starfield" )
+	wnd( 1600,900,"Starfield" ),
+	trashbin(wnd.Gfx(), 2.0f, 0.0f, 0.0f, 0.0f)
 {
 	// makeshift cli for doing some preprocessing bullshit (so many hacks here)
 	if( this->commandLine != "" )
@@ -78,6 +79,7 @@ App::App( const std::string& commandLine )
 		starLights.push_back(std::move(StarLight(s, wnd.Gfx(), starclassmap)));
 	}
 
+	trashbin.SetPos({0.0f, 0.0f, 0.0f});
 }
 
 void App::DoFrame()
@@ -142,30 +144,49 @@ void App::DoFrame()
 	{
 		s.Update(timeStep);
 	}
-	actTime += timeStep;
+	actTime += timeStep * hrdTime;
 
-	if (actTime < eqTime || actTime > hrdTime)
+	if (!(dir < 0.0f) && (actTime > eqTime))
+	{
+		trashbin.Draw(wnd.Gfx());
+	}
+
+	if (actTime < eqTime)
 	{
 		dir = 0.0f;
+		actTime = eqTime;
+		for (StarLight& s : starLights)
+		{
+			s.SetPosToEq();
+		}
+	}
+	else if (actTime > hrdTime)
+	{
+		dir = 0.0f;
+		actTime = hrdTime;
+		for (StarLight& s : starLights)
+		{
+			s.SetPosToHRD();
+		}
 	}
 
 	if( !wnd.CursorEnabled() )
 	{
 		if( wnd.kbd.KeyIsPressed( 'W' ) )
 		{
-			cam.TranslateWorldSpace( { 0.0f,0.0f,dt } );
+			cam.Translate( { 0.0f,0.0f,dt } );
 		}
 		if( wnd.kbd.KeyIsPressed( 'A' ) )
 		{
-			cam.TranslateWorldSpace( { -dt,0.0f,0.0f } );
+			cam.Translate( { -dt,0.0f,0.0f } );
 		}
 		if( wnd.kbd.KeyIsPressed( 'S' ) )
 		{
-			cam.TranslateWorldSpace( { 0.0f,0.0f,-dt } );
+			cam.Translate( { 0.0f,0.0f,-dt } );
 		}
 		if( wnd.kbd.KeyIsPressed( 'D' ) )
 		{
-			cam.TranslateWorldSpace( { dt,0.0f,0.0f } );
+			cam.Translate( { dt,0.0f,0.0f } );
 		}
 		if( wnd.kbd.KeyIsPressed( VK_SPACE ) )
 		{
@@ -187,6 +208,7 @@ void App::DoFrame()
 		
 	// imgui windows
 	cam.SpawnControlWindow();
+	starLights.at(201).SpawnInfoWindow();
 	ShowImguiDemoWindow();
 
 	// present
