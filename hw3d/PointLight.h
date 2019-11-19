@@ -1,4 +1,5 @@
 #pragma once
+#include "Vec3.h"
 #include "Graphics.h"
 #include "SolidSphere.h"
 #include "ConstantBuffers.h"
@@ -13,6 +14,8 @@ public:
 	void Draw( Graphics& gfx ) const noxnd;
 	void Bind( Graphics& gfx,DirectX::FXMMATRIX view ) const noexcept;
 	void SetPos(float x_in, float y_in, float z_in) noexcept;
+	void SetPos(Vec3 posXYZ) noexcept;
+	Vec3 GetPos() const noexcept;
 private:
 	struct PointLightCBuf
 	{

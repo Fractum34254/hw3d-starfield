@@ -74,3 +74,13 @@ void PointLight::SetPos(float x_in, float y_in, float z_in) noexcept
 	z = z_in;
 	Reset();
 }
+
+void PointLight::SetPos(Vec3 posXYZ) noexcept
+{
+	SetPos(posXYZ.x, posXYZ.y, posXYZ.z);
+}
+
+Vec3 PointLight::GetPos() const noexcept
+{
+	return { x,y,z };
+}
