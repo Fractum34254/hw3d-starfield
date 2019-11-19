@@ -29,7 +29,7 @@ void LoadFile(const std::string& name, std::vector<std::string>& vector)
 App::App( const std::string& commandLine )
 	:
 	commandLine( commandLine ),
-	wnd( 1800,1000,"Starfield" )
+	wnd( 1600,900,"Starfield" )
 {
 	// makeshift cli for doing some preprocessing bullshit (so many hacks here)
 	if( this->commandLine != "" )
@@ -116,34 +116,64 @@ void App::DoFrame()
 		case VK_F1:
 			showDemoWindow = true;
 			break;
+		case VK_RETURN:
+			if (dir == 0.0f)
+			{
+				if (actTime <= eqTime)
+				{
+					dir = 1.0f;
+				}
+				else
+				{
+					dir = -1.0f;
+				}
+			}
+			else
+			{
+				dir *= (-1);
+			}
+			break;
 		}
+	}
+
+	const float timeStep = dt * dir * 1.0f / hrdTime;
+
+	for (StarLight& s : starLights)
+	{
+		s.Update(timeStep);
+	}
+	actTime += timeStep;
+
+	if (actTime < eqTime || actTime > hrdTime)
+	{
+		dir = 0.0f;
 	}
 
 	if( !wnd.CursorEnabled() )
 	{
 		if( wnd.kbd.KeyIsPressed( 'W' ) )
 		{
-			cam.Translate( { 0.0f,0.0f,dt } );
+			cam.TranslateWorldSpace( { 0.0f,0.0f,dt } );
 		}
 		if( wnd.kbd.KeyIsPressed( 'A' ) )
 		{
-			cam.Translate( { -dt,0.0f,0.0f } );
+			cam.TranslateWorldSpace( { -dt,0.0f,0.0f } );
 		}
 		if( wnd.kbd.KeyIsPressed( 'S' ) )
 		{
-			cam.Translate( { 0.0f,0.0f,-dt } );
+			cam.TranslateWorldSpace( { 0.0f,0.0f,-dt } );
 		}
 		if( wnd.kbd.KeyIsPressed( 'D' ) )
 		{
-			cam.Translate( { dt,0.0f,0.0f } );
+			cam.TranslateWorldSpace( { dt,0.0f,0.0f } );
 		}
-		if( wnd.kbd.KeyIsPressed( 'R' ) )
+		if( wnd.kbd.KeyIsPressed( VK_SPACE ) )
 		{
-			cam.Translate( { 0.0f,dt,0.0f } );
+			cam.TranslateWorldSpace( { 0.0f,dt,0.0f } );
 		}
-		if( wnd.kbd.KeyIsPressed( 'F' ) )
+		if( wnd.kbd.KeyIsPressed( VK_CONTROL ) )
 		{
-			cam.Translate( { 0.0f,-dt,0.0f } );
+			cam.TranslateWorldSpace( { 0.0f,-dt,0.0f } );
 		}
 	}
 
