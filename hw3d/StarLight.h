@@ -54,6 +54,10 @@ public:
 	{
 		light.SetPos(star.GetHRDPosition());
 	}
+	Vec3 GetPos() const
+	{
+		return light.GetPos();
+	}
 	void SpawnInfoWindow()
 	{
 		if (ImGui::Begin(star.GetName().c_str()))
