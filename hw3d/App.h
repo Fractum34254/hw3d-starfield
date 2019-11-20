@@ -43,4 +43,6 @@ private:
 	Marker marker;
 	size_t currentStar = 0;
 	TestPlane hrd_grid;
+	TestPlane hrd_no_grid;
+	bool grid = true;
 };

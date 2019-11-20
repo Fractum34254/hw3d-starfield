@@ -72,7 +72,8 @@ App::App( const std::string& commandLine )
 	wnd( windowSizeX,windowSizeY,"Starfield" ),
 	trashbin(wnd.Gfx(), 2.0f, 0.0f, 0.0f, 0.0f),
 	marker(wnd.Gfx(), 0.3f, 0.05f, { 0.0f, 1.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }),
-	hrd_grid(wnd.Gfx(), 65.0f, IDB_BITMAP2)
+	hrd_grid(wnd.Gfx(), 65.0f, IDB_BITMAP2),
+	hrd_no_grid(wnd.Gfx(), 65.0f, IDB_BITMAP3)
 {
 	// makeshift cli for doing some preprocessing bullshit (so many hacks here)
 	if( this->commandLine != "" )
@@ -128,6 +129,7 @@ App::App( const std::string& commandLine )
 
 	trashbin.SetPos({0.0f, 0.0f, 0.0f});
 	hrd_grid.SetPos(Vec3(5.0f, -5.0f, -3.0f).GetXMFloat3());
+	hrd_no_grid.SetPos(Vec3(5.0f, -5.0f, -3.0f).GetXMFloat3());
 }
 
 void App::DoFrame()
@@ -144,8 +146,6 @@ void App::DoFrame()
 
 	marker.SetPos(starLights.at(currentStar).GetPos().GetXMFloat3());
 	marker.Draw(wnd.Gfx());
-
-	hrd_grid.Draw(wnd.Gfx());
 
 	if (wnd.mouse.LeftIsPressed() && wnd.CursorEnabled())
 	{
@@ -211,6 +211,14 @@ void App::DoFrame()
 	if (!(dir < 0.0f) && (actTime > eqTime))
 	{
 		trashbin.Draw(wnd.Gfx());
+		if (grid)
+		{
+			hrd_grid.Draw(wnd.Gfx());
+		}
+		else
+		{
+			hrd_no_grid.Draw(wnd.Gfx());
+		}
 	}
 
 	if (actTime < eqTime)
@@ -269,6 +277,12 @@ void App::DoFrame()
 	}
 		
 	// imgui windows
+	if (ImGui::Begin("Grid"))
+	{
+		ImGui::Text("Grid enabled?");
+		ImGui::Checkbox("Enabled", &grid);
+	}
+	ImGui::End();
 	cam.SpawnControlWindow();
 	starLights.at(currentStar).SpawnInfoWindow();
 	ShowImguiDemoWindow();
