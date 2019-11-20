@@ -4,7 +4,7 @@
 class TestPlane : public Drawable
 {
 public:
-	TestPlane( Graphics& gfx,float size );
+	TestPlane( Graphics& gfx,float size, int res );
 	void SetPos( DirectX::XMFLOAT3 pos ) noexcept;
 	void SetRotation( float roll,float pitch,float yaw ) noexcept;
 	DirectX::XMMATRIX GetTransformXM() const noexcept override;

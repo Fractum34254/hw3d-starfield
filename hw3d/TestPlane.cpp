@@ -4,7 +4,7 @@
 #include "imgui/imgui.h"
 #include "TransformCbufDoubleboi.h"
 
-TestPlane::TestPlane( Graphics& gfx,float size )
+TestPlane::TestPlane( Graphics& gfx,float size, int res )
 {
 	using namespace Bind;
 	namespace dx = DirectX;
@@ -15,8 +15,7 @@ TestPlane::TestPlane( Graphics& gfx,float size )
 	AddBind( VertexBuffer::Resolve( gfx,geometryTag,model.vertices ) );
 	AddBind( IndexBuffer::Resolve( gfx,geometryTag,model.indices ) );
 
-	AddBind( Texture::Resolve( gfx,"Images\\brickwall.jpg" ) );
-	AddBind( Texture::Resolve( gfx,"Images\\brickwall_normal_obj.png",2u ) );
+	AddBind( Texture::Resolve( gfx,res ) );
 
 	auto pvs = VertexShader::Resolve( gfx,"PhongVS.cso" );
 	auto pvsbc = pvs->GetBytecode();
