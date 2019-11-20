@@ -114,6 +114,14 @@ public:
 		}
 		ImGui::End();
 	}
+	std::string GetName() const
+	{
+		return star.GetName();
+	}
+	void BindLight(Graphics& gfx, DirectX::FXMMATRIX view)
+	{
+		light.Bind(gfx, view);
+	}
 private:
 	Vec3 CalculateVelocity() const
 	{
