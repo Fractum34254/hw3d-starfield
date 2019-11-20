@@ -84,3 +84,8 @@ void Camera::TranslateWorldSpace(DirectX::XMFLOAT3 translation) noexcept
 		pos.z + translation.z
 	};
 }
+
+Vec3 Camera::GetPos() const
+{
+	return Vec3(pos.x, pos.y, pos.z);
+}

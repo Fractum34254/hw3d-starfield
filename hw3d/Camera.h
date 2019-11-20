@@ -1,4 +1,5 @@
 #pragma once
+#include "Vec3.h"
 #include "Graphics.h"
 
 class Camera
@@ -11,6 +12,7 @@ public:
 	void Rotate( float dx,float dy ) noexcept;
 	void Translate( DirectX::XMFLOAT3 translation ) noexcept;
 	void TranslateWorldSpace(DirectX::XMFLOAT3 translation) noexcept;
+	Vec3 GetPos() const;
 private:
 	DirectX::XMFLOAT3 pos;
 	float pitch;
