@@ -12,12 +12,12 @@ public:
 		colorMap(IDB_BITMAP1)
 	{
 		heatMap["O"] = {0.0, 1.0, 50000.0f, 30000.0f };			///Main Sequence
-		heatMap["B"] = {1.0, 1.0, 28000.0f, 10000.0f };
-		heatMap["A"] = {2.0, 1.0, 9750.0f, 7500.0f };
-		heatMap["F"] = {3.0, 1.0, 7350.0f, 6000.0f };
-		heatMap["G"] = {4.0, 1.0, 5900.0f, 5000.0f };
-		heatMap["K"] = {5.0, 1.0, 4850.0f, 3500.0f };
-		heatMap["M"] = {6.0, 1.0, 3350.0f, 2000.0f };
+		heatMap["B"] = {1.0, 1.0, 30000.0f, 10000.0f };
+		heatMap["A"] = {2.0, 1.0, 10000.0f, 7500.0f };
+		heatMap["F"] = {3.0, 1.0, 7500.0f, 6000.0f };
+		heatMap["G"] = {4.0, 1.0, 6000.0f, 5000.0f };
+		heatMap["K"] = {5.0, 1.0, 5000.0f, 3500.0f };
+		heatMap["M"] = {6.0, 1.0, 3500.0f, 2000.0f };
 		heatMap["L"] = {7.0, 1.0, 2000.0f, 1300.0f };			///Brown Dwarfes
 		heatMap["T"] = {8.0, 1.0, 1300.0f, 600.0f };
 		heatMap["Y"] = {9.0, 1.0, 600.0f, 200.0f };
@@ -49,7 +49,7 @@ public:
 			return -1.0f;
 		}
 		const std::tuple<double, double, float, float> specClass = heatMap.at(main_class);
-		return (std::get<0>(specClass) + ((double)sub_class) / 10.0 * std::get<1>(specClass)) / 10.0;
+		return (std::get<0>(specClass) + ((double)sub_class) / 10.0 * std::get<1>(specClass)) / 10.0 - 0.5;
 	}
 	Vec3 GetColor(float temp)
 	{
