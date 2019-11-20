@@ -384,6 +384,12 @@
     <Image Include="colorTemperature.bmp">
       <Filter>Resource Files</Filter>
     </Image>
+    <Image Include="hrd_grid.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="hrd_no_grid.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
   </ItemGroup>
   <ItemGroup>
     <None Include="DXGetErrorDescription.inl">

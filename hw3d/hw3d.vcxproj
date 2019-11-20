@@ -242,6 +242,8 @@
   <ItemGroup>
     <Image Include="chili.ico" />
     <Image Include="colorTemperature.bmp" />
+    <Image Include="hrd_grid.bmp" />
+    <Image Include="hrd_no_grid.bmp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="DXGetErrorDescription.inl" />
