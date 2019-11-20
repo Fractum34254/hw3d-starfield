@@ -131,6 +131,7 @@ public:
 	const Color* GetBufferPtr() const noexcept;
 	const Color* GetBufferPtrConst() const noexcept;
 	static Surface FromFile( const std::string& name );
+	static Surface FromResource(int resource);
 	void Save( const std::string& filename ) const;
 	void Copy( const Surface& src ) noxnd;
 	bool AlphaLoaded() const noexcept;

@@ -188,6 +188,11 @@ Surface Surface::FromFile( const std::string& name )
 	return Surface( width,height,std::move( pBuffer ),alphaLoaded );
 }
 
+Surface Surface::FromResource(int resource)
+{
+	return Surface(resource);
+}
+
 void Surface::Save( const std::string& filename ) const
 {
 	auto GetEncoderClsid = [&filename]( const WCHAR* format,CLSID* pClsid ) -> void
