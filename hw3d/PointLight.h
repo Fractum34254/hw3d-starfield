@@ -8,6 +8,7 @@
 class PointLight
 {
 public:
+	PointLight(const PointLight& rhs);
 	PointLight( Graphics& gfx, float x, float y, float z, float r, float g, float b, float radius = 0.5f );
 	void SpawnControlWindow() noexcept;
 	void Reset() noexcept;
@@ -16,6 +17,9 @@ public:
 	void SetPos(float x_in, float y_in, float z_in) noexcept;
 	void SetPos(Vec3 posXYZ) noexcept;
 	Vec3 GetPos() const noexcept;
+	Vec3 GetColor() const noexcept;
+	float GetRadius() const noexcept;
+	Graphics& GetGfx() const noexcept;
 private:
 	struct PointLightCBuf
 	{
@@ -31,6 +35,9 @@ private:
 	float x;
 	float y;
 	float z;
+	Vec3 color;
+	float radius;
+	Graphics& gfx;
 	PointLightCBuf cbData;
 	mutable SolidSphere mesh;
 	mutable Bind::PixelConstantBuffer<PointLightCBuf> cbuf;

@@ -1,13 +1,21 @@
 #include "PointLight.h"
 #include "imgui/imgui.h"
 
+PointLight::PointLight(const PointLight & rhs)
+	:
+	PointLight(rhs.GetGfx(), rhs.GetPos().x, rhs.GetPos().y, rhs.GetPos().z, rhs.GetColor().x, rhs.GetColor().y, rhs.GetColor().z, rhs.GetRadius())
+{}
+
 PointLight::PointLight( Graphics& gfx, float x, float y, float z, float r, float g, float b, float radius )
 	:
 	mesh( gfx,radius, r, g, b ),
 	cbuf( gfx ),
+	gfx(gfx),
 	x(x),
 	y(y),
-	z(z)
+	z(z),
+	color(r,g,b),
+	radius(radius)
 {
 	Reset();
 }
@@ -43,7 +51,7 @@ void PointLight::Reset() noexcept
 {
 	cbData = {
 		{ x,y,z },
-		{ 0.05f,0.05f,0.05f },
+		{ 1.0f,1.0f,1.0f },
 		{ 1.0f,1.0f,1.0f },
 		1.0f,
 		1.0f,
@@ -83,4 +91,19 @@ void PointLight::SetPos(Vec3 posXYZ) noexcept
 Vec3 PointLight::GetPos() const noexcept
 {
 	return { x,y,z };
+}
+
+Vec3 PointLight::GetColor() const noexcept
+{
+	return color;
+}
+
+float PointLight::GetRadius() const noexcept
+{
+	return radius;
+}
+
+Graphics & PointLight::GetGfx() const noexcept
+{
+	return gfx;
 }
