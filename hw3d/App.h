@@ -8,6 +8,7 @@
 #include "Mesh.h"
 #include "StarLight.h"
 #include "StarClassMap.h"
+#include "Marker.h"
 #include <set>
 #include <fstream>
 
@@ -39,6 +40,7 @@ private:
 	StarClassMap starclassmap;
 	std::vector<StarLight> starLights;
 	SolidSphere trashbin;
-	SolidSphere marker;
+	Marker marker;
 	size_t currentStar = 0;
+	TestPlane hrd_grid;
 };

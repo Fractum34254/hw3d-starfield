@@ -260,7 +260,7 @@ private:
 		///max: 38	min: -2
 		const double y = (18.0 - (double)GetAbsoluteMagnitude()) / 40.0;
 		//NOT normalized z
-		const float z = 0.0f;
+		const float z = -8.0f;
 		const double scaleD = (double)scale;
 
 		return { (float)(x * scaleD), (float)(y*scaleD), z };
