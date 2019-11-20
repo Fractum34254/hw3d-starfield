@@ -22,6 +22,8 @@ private:
 	void DoFrame();
 	void ShowImguiDemoWindow();
 private:
+	static constexpr int windowSizeX = 1600;
+	static constexpr int windowSizeY = 900;
 	float totalTime = 0.0f;
 	std::string commandLine;
 	bool showDemoWindow = false;
@@ -37,4 +39,6 @@ private:
 	StarClassMap starclassmap;
 	std::vector<StarLight> starLights;
 	SolidSphere trashbin;
+	SolidSphere marker;
+	size_t currentStar = 0;
 };

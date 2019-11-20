@@ -26,11 +26,52 @@ void LoadFile(const std::string& name, std::vector<std::string>& vector)
 	}
 }
 
+size_t CheckForSelection(float xMouse, float yMouse, Vec3 camPos, Graphics& gfx, float windowSizeX, float windowSizeY, std::vector<StarLight>& vector)
+{
+	const DirectX::XMFLOAT3 pixel = { xMouse, yMouse, 0.0f };
+	const DirectX::XMVECTOR worldSpace = DirectX::XMVector3Unproject(DirectX::XMLoadFloat3(&pixel), 0.0f, 0.0f, windowSizeX, windowSizeY, 0.0f, 1.0f, gfx.GetProjection(), gfx.GetCamera(), DirectX::XMMatrixIdentity());
+	DirectX::XMFLOAT3 worldSpaceFloat;
+	DirectX::XMStoreFloat3(&worldSpaceFloat, worldSpace);
+
+	const Vec3 dir = (Vec3( worldSpaceFloat.x, worldSpaceFloat.y, worldSpaceFloat.z ) - camPos).GetNormalized() / 2.0f;
+
+
+	std::vector<std::tuple<const StarLight*, float, size_t>> stars;
+	for (size_t n = 0; n < vector.size(); n++)
+	{
+		stars.push_back({ &vector.at(n), (vector.at(n).GetPos() - (camPos + dir)).LenSq(), n});
+	}
+
+	for (size_t i = 2; stars.size() > 0; i++)
+	{
+		for (size_t k = 0; k < stars.size(); k++)
+		{
+			const float ls = (std::get<0>(stars.at(k))->GetPos() - (camPos + dir * (float)i)).LenSq();
+			if (ls <= 0.25f)
+			{
+				return std::get<2>(stars.at(k));
+			}
+			else if(ls > std::get<1>(stars.at(k)))
+			{
+				stars.erase(stars.begin() + k);
+				k--;
+			}
+			else
+			{
+				std::get<1>(stars.at(k)) = ls;
+			}
+		}
+	}
+	//no stars clicked
+	return vector.size();
+}
+
 App::App( const std::string& commandLine )
 	:
 	commandLine( commandLine ),
-	wnd( 1600,900,"Starfield" ),
-	trashbin(wnd.Gfx(), 2.0f, 0.0f, 0.0f, 0.0f)
+	wnd( windowSizeX,windowSizeY,"Starfield" ),
+	trashbin(wnd.Gfx(), 2.0f, 0.0f, 0.0f, 0.0f),
+	marker(wnd.Gfx(), 0.3f, 0.0f, 1.0f, 0.0f)
 {
 	// makeshift cli for doing some preprocessing bullshit (so many hacks here)
 	if( this->commandLine != "" )
@@ -92,6 +133,18 @@ void App::DoFrame()
 	for (const StarLight& s : starLights)
 	{
 		s.Draw(cam.GetMatrix());
+	}
+
+	marker.SetPos(starLights.at(currentStar).GetPos().GetXMFloat3());
+	marker.Draw(wnd.Gfx());
+
+	if (wnd.mouse.LeftIsPressed() && wnd.CursorEnabled())
+	{
+		size_t temp = CheckForSelection((float)wnd.mouse.GetPosX(), (float)wnd.mouse.GetPosY(), cam.GetPos(), wnd.Gfx(), (float)windowSizeX, (float)windowSizeY, starLights);
+		if (temp != starLights.size())
+		{
+			currentStar = temp;
+		}
 	}
 
 	while( const auto e = wnd.kbd.ReadKey() )
@@ -208,7 +261,7 @@ void App::DoFrame()
 		
 	// imgui windows
 	cam.SpawnControlWindow();
-	starLights.at(201).SpawnInfoWindow();
+	starLights.at(currentStar).SpawnInfoWindow();
 	ShowImguiDemoWindow();
 
 	// present
