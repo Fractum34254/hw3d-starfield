@@ -23,6 +23,7 @@
 #include <algorithm>
 #include "ChiliMath.h"
 #include "Vec2.h"
+#include <directxmath.h>
 
 template <typename T>
 class _Vec3
@@ -171,6 +172,10 @@ public:
 		_Vec3 temp(*this);
 		temp.Hadamard(rhs);
 		return temp;
+	}
+	DirectX::XMFLOAT3 GetXMFloat3() const
+	{
+		return { (float)x, (float)y, (float)z };
 	}
 public:
 	T x;
