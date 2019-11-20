@@ -42,6 +42,12 @@ public:
 		y(v2.y),
 		z(z)
 	{}
+	_Vec3(DirectX::XMFLOAT3 xm)
+		:
+		x((T)xm.x),
+		y((T)xm.y),
+		z((T)xm.z)
+	{}
 	template <typename T2>
 	explicit operator _Vec3<T2>() const
 	{
