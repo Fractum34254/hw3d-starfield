@@ -384,10 +384,10 @@
     <Image Include="colorTemperature.bmp">
       <Filter>Resource Files</Filter>
     </Image>
-    <Image Include="hrd_grid.bmp">
+    <Image Include="hrd_grid_2600.bmp">
       <Filter>Resource Files</Filter>
     </Image>
-    <Image Include="hrd_no_grid.bmp">
+    <Image Include="hrd_no_grid_2600.bmp">
       <Filter>Resource Files</Filter>
     </Image>
   </ItemGroup>
