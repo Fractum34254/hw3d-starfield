@@ -72,8 +72,8 @@ App::App( const std::string& commandLine )
 	wnd( windowSizeX,windowSizeY,"Starfield" ),
 	trashbin(wnd.Gfx(), 2.0f, 0.0f, 0.0f, 0.0f),
 	marker(wnd.Gfx(), 0.3f, 0.05f, { 0.0f, 1.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }),
-	hrd_grid(wnd.Gfx(), 65.0f, IDB_BITMAP2),
-	hrd_no_grid(wnd.Gfx(), 65.0f, IDB_BITMAP3)
+	hrd_grid(wnd.Gfx(), 65.0f, IDB_BITMAP5),
+	hrd_no_grid(wnd.Gfx(), 65.0f, IDB_BITMAP7)
 {
 	// makeshift cli for doing some preprocessing bullshit (so many hacks here)
 	if( this->commandLine != "" )
@@ -120,16 +120,9 @@ App::App( const std::string& commandLine )
 	{
 		s.pop_back();
 		starLights.push_back(std::move(StarLight(s, wnd.Gfx(), starclassmap)));
-
-		if (starLights.back().GetName() == "Sonne")
-		{
-			starLights.back().BindLight(wnd.Gfx(), cam.GetMatrix());
-		}
 	}
 
 	trashbin.SetPos({0.0f, 0.0f, 0.0f});
-	hrd_grid.SetPos(Vec3(5.0f, -5.0f, -3.0f).GetXMFloat3());
-	hrd_no_grid.SetPos(Vec3(5.0f, -5.0f, -3.0f).GetXMFloat3());
 }
 
 void App::DoFrame()
@@ -240,6 +233,7 @@ void App::DoFrame()
 	for (StarLight& s : starLights)
 	{
 		s.Update(timeStep);
+		s.SetAmbient(actTime / hrdTime);
 	}
 	actTime += timeStep * hrdTime;
 	
@@ -261,11 +255,16 @@ void App::DoFrame()
 			s.SetPosToHRD();
 		}
 	}
+	hrd_grid.SetPos(Vec3(5.0f, -5.0f, 63.0f / hrdTime * (hrdTime - actTime) - 3.0f).GetXMFloat3());
+	hrd_no_grid.SetPos(Vec3(5.0f, -5.0f, 63.0f / hrdTime * (hrdTime - actTime) - 3.0f).GetXMFloat3());
 
 	//draw everything
 	if (!(dir < 0.0f) && (actTime > eqTime))
 	{
 		trashbin.Draw(wnd.Gfx());
+	}
+	if (actTime > eqTime)
+	{
 		if (grid)
 		{
 			hrd_grid.Draw(wnd.Gfx());

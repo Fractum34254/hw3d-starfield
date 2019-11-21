@@ -122,6 +122,10 @@ public:
 	{
 		light.Bind(gfx, view);
 	}
+	void SetAmbient(float perc)
+	{
+		light.SetAmbient(perc);
+	}
 private:
 	Vec3 CalculateVelocity() const
 	{

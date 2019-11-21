@@ -51,7 +51,7 @@ void PointLight::Reset() noexcept
 {
 	cbData = {
 		{ x,y,z },
-		{ 1.0f,1.0f,1.0f },
+		{ 0.0f,0.0f,0.0f },
 		{ 1.0f,1.0f,1.0f },
 		1.0f,
 		1.0f,
@@ -81,6 +81,14 @@ void PointLight::SetPos(float x_in, float y_in, float z_in) noexcept
 	y = y_in;
 	z = z_in;
 	Reset();
+}
+
+void PointLight::SetAmbient(float percentage) noexcept
+{
+	const float p = std::clamp(percentage, 0.0f, 1.0f);
+	cbData.ambient.x = p;
+	cbData.ambient.y = p;
+	cbData.ambient.z = p;
 }
 
 void PointLight::SetPos(Vec3 posXYZ) noexcept

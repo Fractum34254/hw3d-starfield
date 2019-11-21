@@ -15,6 +15,7 @@ public:
 	void Draw( Graphics& gfx ) const noxnd;
 	void Bind( Graphics& gfx,DirectX::FXMMATRIX view ) const noexcept;
 	void SetPos(float x_in, float y_in, float z_in) noexcept;
+	void SetAmbient(float percentage) noexcept;
 	void SetPos(Vec3 posXYZ) noexcept;
 	Vec3 GetPos() const noexcept;
 	Vec3 GetColor() const noexcept;
