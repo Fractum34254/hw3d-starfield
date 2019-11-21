@@ -390,6 +390,18 @@
     <Image Include="hrd_no_grid_2600.bmp">
       <Filter>Resource Files</Filter>
     </Image>
+    <Image Include="hrd_grid_650.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="hrd_grid_1300.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="hrd_no_grid_650.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="hrd_no_grid_1300.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
   </ItemGroup>
   <ItemGroup>
     <None Include="DXGetErrorDescription.inl">
