@@ -88,6 +88,11 @@ public:
 					if (information == "")
 					{
 						unknown += UnknownProperties::Parallax;
+						parallax = information;
+					}
+					else
+					{
+						parallax = std::to_string(std::stod(information) / 1000.0).substr(0,6);
 					}
 					break;
 				case 15:
@@ -202,7 +207,7 @@ public:
 	}
 	std::string GetFullDeclination() const
 	{
-		return DSign + DDegrees + "° " + DMinutes + "' " + DSeconds + "\"";
+		return DSign + DDegrees + " Grad " + DMinutes + "' " + DSeconds + "\"";
 	}
 	std::string GetDistanceString() const
 	{
