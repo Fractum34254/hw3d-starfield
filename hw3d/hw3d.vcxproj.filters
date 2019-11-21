@@ -402,6 +402,12 @@
     <Image Include="hrd_no_grid_1300.bmp">
       <Filter>Resource Files</Filter>
     </Image>
+    <Image Include="theiss.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="star.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
   </ItemGroup>
   <ItemGroup>
     <None Include="DXGetErrorDescription.inl">
