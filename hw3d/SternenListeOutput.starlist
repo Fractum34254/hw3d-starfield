@@ -4,9 +4,9 @@ Proxima Centauri b#Alpha Centauri (Rigil Kentaurus)#Planet#Planet##14#29#43#-#62
 Alpha Centauri A (HD 128620)#Alpha Centauri (Rigil Kentaurus)#Stern#G#2.0#14#39#36#-#60#50#2#Zentaur#4.3648#747.20#-0.01#4.38#1.10000#1.22700=
 Alpha Centauri B (HD 128621)#Alpha Centauri (Rigil Kentaurus)#Stern#K#1.0#14#39#35#-#60#50#14#Zentaur#4.3648#747.20#1.350#5.71#0.90700#0.86500=
 Barnards Pfeilstern (BD+04°3561a)#Barnards Pfeilstern (BD+04°3561a)#Stern#M#3.8#17#57#49#+#4#41#36#Schlangenträger#5.9801#545.40#9.530#13.2#0.14400#0.19600=
-Luhman 16 A#Luhman 16 (WISE 1049?5319)#Brauner Zwerg#L#8.0#10#49#19#-#53#19#10#Segel des Schiffs#6.5890#495.00#16.20##0.04000#=
-Luhman 16 B#Luhman 16 (WISE 1049?5319)#Brauner Zwerg#T#1.0#10#49#19#-#53#19#10#Segel des Schiffs#6.5890#495.00#16.20##0.03000#=
-WISE 0855?0714#WISE 0855?0714#Brauner Zwerg#Y#0.0#8#55#11#-#7#14#43#Wasserschlange#7.5324#433.00###0.00300#=
+Luhman 16 A#Luhman 16 (WISE 1049-5319)#Brauner Zwerg#L#8.0#10#49#19#-#53#19#10#Segel des Schiffs#6.5890#495.00#16.20##0.04000#=
+Luhman 16 B#Luhman 16 (WISE 1049-5319)#Brauner Zwerg#T#1.0#10#49#19#-#53#19#10#Segel des Schiffs#6.5890#495.00#16.20##0.03000#=
+WISE 0855-0714#WISE 0855-0714#Brauner Zwerg#Y#0.0#8#55#11#-#7#14#43#Wasserschlange#7.5324#433.00###0.00300#=
 Wolf 359 (CN Leonis)#Wolf 359 (CN Leonis)#Stern#M#6.5#10#56#29#+#7#0#52#Löwe#7.7823#419.10#13.54#16.5#0.09000#0.16000=
 Lalande 21185 (BD+36°2147)#Lalande 21185 (BD+36°2147)#Stern#M#2.0#11#3#20#+#35#58#12#Großer Bär#8.3067#392.60#7.470#10.4#0.46000#0.40000=
 Alpha Canis Majoris A (Sirius A)#Sirius (Alpha Canis Majoris)#Stern#A#1.0#6#45#9#-#16#42#58#Großer Hund#8.6009#379.20#-1.43#1.47#2.02000#1.71100=
@@ -24,7 +24,7 @@ Ross 128 (FI Virginis)#Ross 128 (FI Virginis)#Stern#M#4.0#11#47#44#+#0#48#17#Jun
 EZ Aquarii A (Luyten 789-6 A)#EZ Aquarii (Luyten 789-6)#Stern#M#5.0#22#38#34#-#15#17#57#Wassermann#11.082#294.30#13.33#15.6#0.11000#0.08000=
 EZ Aquarii B (Luyten 789-6 B)#EZ Aquarii (Luyten 789-6)#Stern#M##22#38#34#-#15#18#2#Wassermann#11.082#294.30#13.27#15.5#0.11000#=
 EZ Aquarii C (Luyten 789-6 C)#EZ Aquarii (Luyten 789-6)#Stern#M##22#38#34#-#15#18#2#Wassermann#11.082#294.30#14.03#16.3#0.08000#=
-WISE 0350?5658#WISE 0350?5658#Brauner Zwerg#Y#1.0#3#50#0#-#56#58#30#Netz#11.208#291.00#22.80###=
+WISE 0350-5658#WISE 0350-5658#Brauner Zwerg#Y#1.0#3#50#0#-#56#58#30#Netz#11.208#291.00#22.80###=
 Struve 2398 A (HD 173739)#Gliese 725 (Struve 2398)#Stern#M#3.0#18#42#47#+#59#37#49#Drache#11.401#286.10#8.900#11.1#0.36000#0.55000=
 Struve 2398 B (HD 173740)#Gliese 725 (Struve 2398)#Stern#M#3.5#18#42#47#+#59#37#36#Drache#11.401#286.10#9.690#11.9#0.30000#0.54000=
 61 Cygni A (ADS 14636 A)#61 Cygni (Gliese 820)#Stern#K#5.0#21#6#54#+#38#44#58#Schwan#11.409#285.80#5.210#7.49#0.70000#0.66500=
@@ -37,8 +37,8 @@ Epsilon Indi A (Gliese 845 A)#Epsilon Indi (Gliese 845)#Stern#K#5.0#22#3#22#-#56
 Epsilon Indi B (Gliese 845 B)#Epsilon Indi (Gliese 845)#Brauner Zwerg#T#1.0#22#4#11#-#56#46#58#Indianer#11.815#276.00#23.60#25.8#0.06600#0.09100=
 Epsilon Indi C (Gliese 845 C)#Epsilon Indi (Gliese 845)#Brauner Zwerg#T#6.0#22#4#11#-#56#46#58#Indianer#11.815#276.00#31.30#33.5#0.04700#0.09200=
 DX Cancri (GJ 1111)#DX Cancri (GJ 1111)#Stern#M#6.5#8#29#49#+#26#46#34#Krebs#11.826#275.80#14.78#16.9#0.09000#0.11000=
-Tau Ceti (BD?16°295)#Tau Ceti (BD?16°295)#Stern#G#8.5#1#44#4#-#15#56#15#Walfisch#11.905#273.90#3.490#5.68#0.77000#0.77300=
-Trümmerscheibe Tau Ceti#Tau Ceti (BD?16°295)#Gürtel#Belt##1#44#4#-#15#56#15#Walfisch#11.905#273.90####=
+Tau Ceti (BD-16°295)#Tau Ceti (BD-16°295)#Stern#G#8.5#1#44#4#-#15#56#15#Walfisch#11.905#273.90#3.490#5.68#0.77000#0.77300=
+Trümmerscheibe Tau Ceti#Tau Ceti (BD-16°295)#Gürtel#Belt##1#44#4#-#15#56#15#Walfisch#11.905#273.90####=
 GJ 1061 (LHS 1565)#GJ 1061 (LHS 1565)#Stern#M#5.5#3#35#60#-#44#30#46#Pendeluhr#12.042#270.80#13.09#15.2#0.11300#0.14500=
 YZ Ceti (LHS 138. GJ 54.1)#YZ Ceti (LHS 138. GJ 54.1)#Stern#M#4.5#1#12#31#-#16#59#56#Walfisch#12.121#269.00#12.02#14.1#0.18000#0.24000=
 Luytens Stern (BD+5°1668)#Luytens Stern (BD+5°1668)#Stern#M#3.5#7#27#25#+#5#13#33#Kleiner Hund#12.251#266.20#9.870#11.9#0.35000#0.26000=
@@ -89,9 +89,9 @@ Gliese 832 (LHS 3685)#Gliese 832 (HIP 106440)#Stern#M#1.5#21#33#34#-#49#0#32#Kra
 Gliese 832 c#Gliese 832 (HIP 106440)#Planet#Planet##21#33#34#-#49#0#32#Kranich#16.157#201.80###0.00002#=
 Gliese 832 b#Gliese 832 (HIP 106440)#Planet#Planet##21#33#34#-#49#0#32#Kranich#16.157#201.80###0.00066#=
 2MASS 0255-4700 (DEN 0255-4700)#2MASS 0255-4700 (DEN 0255-4700)#Brauner Zwerg#L#7.5#2#55#4#-#47#0#51#Eridanus#16.197#201.30#22.92#24.4#0.02500#0.08000=
-Keid A (40 Eridani A)#Keid (40 Eridani. ?2 Eridani)#Stern#K#0.5#4#15#16#-#7#39#10#Eridanus#16.257#200.60#4.430#5.92#0.75000#0.87000=
-Keid B (40 Eridani B)#Keid (40 Eridani. ?2 Eridani)#Weißer Zwerg#DA#2.9#4#15#21#-#7#39#29#Eridanus#16.257#200.60#9.520#11.0#0.50000#0.01600=
-Keid C (40 Eri C. DY Eridani)#Keid (40 Eridani. ?2 Eridani)#Stern#M#4.5#4#15#22#-#7#39#17#Eridanus#16.257#200.60#11.19#12.6#0.13000#0.22000=
+Keid A (40 Eridani A)#Keid (40 Eridani. o^2 Eridani)#Stern#K#0.5#4#15#16#-#7#39#10#Eridanus#16.257#200.60#4.430#5.92#0.75000#0.87000=
+Keid B (40 Eridani B)#Keid (40 Eridani. 0^2 Eridani)#Weißer Zwerg#DA#2.9#4#15#21#-#7#39#29#Eridanus#16.257#200.60#9.520#11.0#0.50000#0.01600=
+Keid C (40 Eri C. DY Eridani)#Keid (40 Eridani. o^2 Eridani)#Stern#M#4.5#4#15#22#-#7#39#17#Eridanus#16.257#200.60#11.19#12.6#0.13000#0.22000=
 WISE 0521+1025#WISE 0521+1025#Brauner Zwerg#T#7.5#5#21#26#+#10#25#27#Orion#16.310##15.20###=
 EV Lacertae (Gliese 873)#EV Lacertae (Gliese 873)#Stern#M#3.5#22#46#50#+#44#20#2#Eidechse#16.455#198.20#10.29#12.6#0.35000#0.36000=
 Gliese 682 (LHS 451)#Gliese 682 (HIP 86214)#Stern#M#3.5#17#37#4#-#44#19#9#Skorpion#16.565#196.90#10.96#12.4#0.21000#0.27000=
@@ -99,7 +99,7 @@ Gliese 682 b#Gliese 682 (HIP 86214)#Planet#Planet##17#37#4#-#44#19#9#Skorpion#16
 Gliese 682 c#Gliese 682 (HIP 86214)#Planet#Planet##17#37#4#-#44#19#9#Skorpion#16.565#196.90####=
 70 Ophiuchi A (GJ 702 A)#70 Ophiuchi (GJ 702)#Stern#K#0.0#18#5#27#+#2#29#59#Schlangenträger#16.580#196.70#4.030#5.50#0.90000#0.91000=
 70 Ophiuchi B (GJ 702 B)#70 Ophiuchi (GJ 702)#Stern#K#5.0#18#5#27#+#2#29#56#Schlangenträger#16.580#196.70#6.000#7.47#0.70000#0.73000=
-? Aquilae (Gliese 768)#Altair (Alpha Aquilae)#Stern#A#7.0#19#50#47#+#8#52#6#Adler#16.730#194.90#0.770#2.21#1.79000#1.63000=
+Alpha Aquilae (Gliese 768)#Altair (Alpha Aquilae)#Stern#A#7.0#19#50#47#+#8#52#6#Adler#16.730#194.90#0.770#2.21#1.79000#1.63000=
 GJ 1116 A (EI Cancri A)#GJ 1116 (G 9-38)#Stern#M#5.5#8#58#15#+#19#45#47#Krebs#17.058#191.20#14.06#15.4#0.06200#=
 GJ 1116 B (EI Cancri B)#GJ 1116 (G 9-38)#Stern#M#8.0#8#58#15#+#19#45#47#Krebs#17.058#191.20#14.92#16.3#0.00500#=
 GJ 3379 (LTT 17897)#GJ 3379 (LTT 17897)#Stern#M#3.5#6#0#4#+#2#42#24#Orion#17.097#190.70#11.31#12.7#0.19000#0.27000=
@@ -115,7 +115,7 @@ Gliese 251 (Wolf 294)#Gliese 251 (Wolf 294)#Stern#M#3.0#6#54#49#+#33#16#5#Zwilli
 2MASS 1835+3259 (LSR 1835+3259)#2MASS 1835+3259 (LSR 1835+3259)#Brauner Zwerg#M#8.5#18#35#38#+#32#59#54#Leier#18.479#176.50#10.20##0.07000#=
 WISE 1741+2553#WISE 1741+2553#Brauner Zwerg#T#9.0#17#41#24#+#25#53#19#Herkules#18.526#180.00#16.50###=
 Gliese 205 (Wolf 1453)#Gliese 205 (Wolf 1453)#Stern#M#1.0#5#31#27#-#3#40#38#Orion#18.533#175.90#7.950#9.18#0.63000#0.76000=
-WISE 1541?2250#WISE 1541?2250#Brauner Zwerg#Y#0.5#15#41#52#-#22#50#25#Waage#18.627#175.10#21.10##0.01150#0.10370=
+WISE 1541-2250#WISE 1541-2250#Brauner Zwerg#Y#0.5#15#41#52#-#22#50#25#Waage#18.627#175.10#21.10##0.01150#0.10370=
 LP 816-60 (NLTT 50038)#LP 816-60 (HIP 103039)#Stern#M#3.5#20#52#33#-#16#58#29#Steinbock#18.634#175.00#11.50#12.7#0.19000#=
 2MASS 0415-0935#2MASS 0415-0935#Brauner Zwerg#T#8.0#4#15#20#-#9#35#7#Eridanus#18.708#174.30#15.00##0.03000#=
 Sigma Draconis (Gliese 764)#Alsafi (Sigma Draconis)#Stern#G#9.0#19#32#22#+#69#39#40#Drache#18.767#173.70#4.670#5.87#0.87000#0.77800=
@@ -171,7 +171,7 @@ Furuhjelm 46 B (Gliese 661 B)#Furuhjelm 46 (Gliese 661)#Stern#M#3.5#17#12#8#+#45
 2MASS 0136+0933 (SIMP 0136+0933)#2MASS 0136+0933 (SIMP 0136+0933)#Brauner Zwerg#T#2.5#1#36#57#-#75#0#25#Fische#20.874#156.20#13.40##0.00960#=
 LP 658-2 (EGGR 45)#Gliese 223.2 (HL 4)#Weißer Zwerg#DZ#11.#5#55#10#-#4#10#17#Orion#20.901#156.00#14.47#15.4#0.45000#0.00490=
 GJ 3959 (NLTT 43010)#GJ 3959 (G 180-60)#Stern#M#5.0#16#31#18#+#40#51#54#Herkules#20.907#156.00#14.76#15.7#0.10000#=
-LP 944-20 (WISE 0339-3525)#LP 944-20 (2MASS 0339?3525)#Stern#M#9.0#3#39#35#-#35#25#44#Chemischer Ofen#20.922#155.80#18.69#20.0#0.05730#=
+LP 944-20 (WISE 0339-3525)#LP 944-20 (2MASS 0339-3525)#Stern#M#9.0#3#39#35#-#35#25#44#Chemischer Ofen#20.922#155.80#18.69#20.0#0.05730#=
 Gliese 644 A (V1054 Ophiuchi A)#Gliese 644/Gliese 643 (V1054 Ophiuchi)#Stern#M#2.5#16#55#29#-#8#20#11#Schlangenträger#21.048#154.90#9.720#10.6#0.41500#=
 Gliese 644 B (V1054 Ophiuchi Ba)#Gliese 644/Gliese 643 (V1054 Ophiuchi)#Stern#M#4.0#16#55#29#-#8#20#11#Schlangenträger#21.048#154.90#10.37#11.3#0.34700#=
 Gliese 644 D (V1054 Ophiuchi Bb)#Gliese 644/Gliese 643 (V1054 Ophiuchi)#Stern#M#4.0#16#55#29#-#8#20#11#Schlangenträger#21.048#154.90#10.87#11.8#0.31400#=
@@ -197,7 +197,7 @@ WISE 2209+2711#WISE 2209+2711#Brauner Zwerg#Y#1.0#22#9#5#+#27#11#44#Pegasus#22.1
 Ross 671 A (Gliese 880 A)#Ross 671 (Gliese 880)#Stern#M#1.5#22#56#35#+#16#33#12#Pegasus#22.283#146.30#8.650#9.48#0.58600#0.68900=
 Ross 671 B (Gliese 880 B)#Ross 671 (Gliese 880)#Stern#M##22#56#35#+#16#33#12#Pegasus#22.283#146.30####=
 Ross 619 (Gliese 299)#Ross 619 (Gliese 299)#Stern#M#4.0#8#11#58#+#8#46#28#Krebs#22.294#146.30#12.82#13.6#0.15000#0.22000=
-WISE 0359?5401#WISE 0359?5401#Brauner Zwerg#Y#0.0#3#59#34#-#54#1#55#Netz#22.493#145.00#21.50###=
+WISE 0359-5401#WISE 0359-5401#Brauner Zwerg#Y#0.0#3#59#34#-#54#1#55#Netz#22.493#145.00#21.50###=
 2MASS 1515+4847#2MASS 1515+4847#Brauner Zwerg#L#6.0#15#15#1#+#48#47#42#Bärenhüter#22.505##14.10###=
 GJ 3192 A (LP 771-95 A)#GJ 3192 (LP 771-95)#Stern#M#2.5#3#1#51#-#16#35#36#Eridanus#22.679#143.80#11.22#12.0#0.25000#=
 GJ 3192 B (LP 771-95 B)#GJ 3192 (LP 771-95)#Stern#M#3.0#3#1#51#-#16#35#31#Eridanus#22.679#143.80#11.79#12.5#0.19000#=
@@ -214,7 +214,7 @@ Gliese 667 C (LHS 443)#Gliese 667 (142 G. Scorpii)#Stern#M#1.5#17#18#57#-#34#59#
 Gliese 667 Cb#Gliese 667 (142 G. Scorpii)#Planet#Planet##17#18#57#-#34#59#23#Skorpion#23.151#140.80###0.01682#=
 Gliese 667 Cc#Gliese 667 (142 G. Scorpii)#Planet#Planet##17#18#57#-#34#59#23#Skorpion#23.151#140.80###0.01231#=
 WISE 0005+3737#WISE 0005+3737#Brauner Zwerg#T#9.0#0#5#17#+#37#37#21#Andromeda#23.157##18.30###=
-WISE 0713?2917#WISE 0713?2917#Brauner Zwerg#Y#0.0#7#13#23#-#29#17#52#Großer Hund#23.157##19.60##0.01910#=
+WISE 0713-2917#WISE 0713-2917#Brauner Zwerg#Y#0.0#7#13#23#-#29#17#52#Großer Hund#23.157##19.60##0.01910#=
 WISE 2056+1459#WISE 2056+1459#Brauner Zwerg#Y#0.0#20#56#29#+#14#59#54#Delphin#23.297#140.00#19.20##0.01150#0.09550=
 Gliese 105 A (HD 16160. LHS 15)#Gliese 105 (268 G. Cet)#Stern#K#3.0#2#36#5#+#6#53#13#Walfisch#23.419#139.20#5.820#6.49#0.81000#0.65000=
 Gliese 105 B (BX Ceti. LHS 16)#Gliese 105 (268 G. Cet)#Stern#M#3.5#2#36#15#+#6#52#18#Walfisch#23.419#139.20#11.66#12.3#0.21000#0.28000=
