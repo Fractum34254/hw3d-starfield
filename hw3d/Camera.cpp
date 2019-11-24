@@ -30,6 +30,7 @@ void Camera::SpawnControlWindow() noexcept
 {
 	if( ImGui::Begin( "Camera" ) )
 	{
+		ImGui::SetWindowFontScale(1.2f);
 		ImGui::Text( "Position" );
 		ImGui::SliderFloat( "X",&pos.x,-80.0f,80.0f,"%.1f" );
 		ImGui::SliderFloat( "Y",&pos.y,-80.0f,80.0f,"%.1f" );

@@ -62,6 +62,7 @@ public:
 	{
 		if (ImGui::Begin(star.GetName().c_str()))
 		{
+			ImGui::SetWindowFontScale(1.2f);
 			std::string info = "Name: " + star.GetName();
 			ImGui::Text(info.c_str());
 			info = "System: " + star.GetSystem();

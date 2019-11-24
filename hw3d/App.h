@@ -23,8 +23,8 @@ private:
 	void DoFrame();
 	void ShowImguiDemoWindow();
 private:
-	static constexpr int windowSizeX = 1600;
-	static constexpr int windowSizeY = 900;
+	static constexpr int windowSizeX = 1200;
+	static constexpr int windowSizeY = 675;
 	float totalTime = 0.0f;
 	std::string commandLine;
 	bool showDemoWindow = false;

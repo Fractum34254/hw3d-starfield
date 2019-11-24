@@ -283,6 +283,7 @@ void App::DoFrame()
 	// imgui windows
 	if (ImGui::Begin("Grid"))
 	{
+		ImGui::SetWindowFontScale(1.2f);
 		ImGui::Text("Grid enabled?");
 		ImGui::Checkbox("Enabled", &grid);
 	}
