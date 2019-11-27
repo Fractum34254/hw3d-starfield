@@ -39,6 +39,8 @@ public:
 			LRelease,
 			RPress,
 			RRelease,
+			MPress,
+			MRelease,
 			WheelUp,
 			WheelDown,
 			Move,
@@ -96,6 +98,7 @@ public:
 	bool IsInWindow() const noexcept;
 	bool LeftIsPressed() const noexcept;
 	bool RightIsPressed() const noexcept;
+	bool MiddleIsPressed() const noexcept;
 	std::optional<Mouse::Event> Read() noexcept;
 	bool IsEmpty() const noexcept
 	{
@@ -114,6 +117,8 @@ private:
 	void OnLeftReleased( int x,int y ) noexcept;
 	void OnRightPressed( int x,int y ) noexcept;
 	void OnRightReleased( int x,int y ) noexcept;
+	void OnMiddlePressed(int x, int y) noexcept;
+	void OnMiddleReleased(int x, int y) noexcept;
 	void OnWheelUp( int x,int y ) noexcept;
 	void OnWheelDown( int x,int y ) noexcept;
 	void TrimBuffer() noexcept;
@@ -125,6 +130,7 @@ private:
 	int y;
 	bool leftIsPressed = false;
 	bool rightIsPressed = false;
+	bool middleIsPressed = false;
 	bool isInWindow = false;
 	int wheelDeltaCarry = 0;
 	bool rawEnabled = false;

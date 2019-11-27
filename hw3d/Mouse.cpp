@@ -63,6 +63,11 @@ bool Mouse::RightIsPressed() const noexcept
 	return rightIsPressed;
 }
 
+bool Mouse::MiddleIsPressed() const noexcept
+{
+	return middleIsPressed;
+}
+
 std::optional<Mouse::Event> Mouse::Read() noexcept
 {
 	if( buffer.size() > 0u )
@@ -152,6 +157,22 @@ void Mouse::OnRightReleased( int x,int y ) noexcept
 	rightIsPressed = false;
 
 	buffer.push( Mouse::Event( Mouse::Event::Type::RRelease,*this ) );
+	TrimBuffer();
+}
+
+void Mouse::OnMiddlePressed(int x, int y) noexcept
+{
+	middleIsPressed = true;
+
+	buffer.push(Mouse::Event(Mouse::Event::Type::MPress, *this));
+	TrimBuffer();
+}
+
+void Mouse::OnMiddleReleased(int x, int y) noexcept
+{
+	middleIsPressed = false;
+
+	buffer.push(Mouse::Event(Mouse::Event::Type::MRelease, *this));
 	TrimBuffer();
 }
 

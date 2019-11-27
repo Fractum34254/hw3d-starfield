@@ -36,6 +36,7 @@ private:
 	Window wnd;
 	ChiliTimer timer;
 	float speed_factor = 1.0f;
+	static constexpr float wheelFactor = 2.0f;
 	Camera cam;
 	StarClassMap starclassmap;
 	std::vector<StarLight> starLights;

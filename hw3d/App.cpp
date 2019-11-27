@@ -206,15 +206,58 @@ void App::DoFrame()
 	}
 
 	//Mouse input
-	if (wnd.mouse.LeftIsPressed() && wnd.CursorEnabled())
+	while(const auto mEvent = wnd.mouse.Read())
 	{
-		size_t temp = CheckForSelection((float)wnd.mouse.GetPosX(), (float)wnd.mouse.GetPosY(), cam.GetPos(), wnd.Gfx(), (float)windowSizeX, (float)windowSizeY, starLights);
-		if (temp != starLights.size())
+		switch (mEvent.value().GetType())
 		{
-			currentStar = temp;
+		case Mouse::Event::Type::LPress:
+			if (wnd.CursorEnabled())
+			{
+				size_t temp = CheckForSelection((float)wnd.mouse.GetPosX(), (float)wnd.mouse.GetPosY(), cam.GetPos(), wnd.Gfx(), (float)windowSizeX, (float)windowSizeY, starLights);
+				if (temp != starLights.size())
+				{
+					currentStar = temp;
+				}
+			}
+			break;
+		case Mouse::Event::Type::RPress:
+			if (dir == 0.0f)
+			{
+				if (actTime <= eqTime)
+				{
+					dir = 1.0f;
+				}
+				else
+				{
+					dir = -1.0f;
+				}
+			}
+			else
+			{
+				dir *= (-1);
+			}
+			break;
+		case Mouse::Event::Type::MPress:
+			if (wnd.CursorEnabled())
+			{
+				wnd.DisableCursor();
+				wnd.mouse.EnableRaw();
+			}
+			else
+			{
+				wnd.EnableCursor();
+				wnd.mouse.DisableRaw();
+			}
+			break;
+		case Mouse::Event::Type::WheelUp:
+			cam.Translate({ 0.0f,0.0f,dt * wheelFactor });
+			break;
+		case Mouse::Event::Type::WheelDown:
+			cam.Translate({ 0.0f,0.0f,-dt * wheelFactor});
+			break;
 		}
 	}
-	
+
 	while (const auto delta = wnd.mouse.ReadRawDelta())
 	{
 		if (!wnd.CursorEnabled())
